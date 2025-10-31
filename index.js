@@ -15,3 +15,32 @@ console.log(phoneRegex.test("+5804242344243"));
 
 //validacion de password
 console.log(passwordSimpleRegex.test("123456"));
+
+//selector
+const countries = document.querySelector("#countries");
+const usernameInput = document.querySelector("#username");
+
+//validaciones
+let usernameValidacion = false;
+
+
+[...countries].forEach(option =>{
+   option.innerHTML = (option.innerHTML.split("(")[0]);
+});
+
+usernameInput.addEventListener("input", event =>{
+    usernameValidacion = usernameRegex.test(event.target.value);
+    const informacion = event.target.parentElement.children[1];
+    if(usernameValidacion){ 
+        usernameInput.classList.add("correct");
+        usernameInput.classList.remove("incorrect");
+        informacion.classList.remove("show-informacion");
+    }else{
+        usernameInput.classList.add("incorrect");
+        usernameInput.classList.remove("correct");
+        informacion.classList.add("show-informacion");
+    }
+
+})
+
+

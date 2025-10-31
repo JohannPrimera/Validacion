@@ -5,3 +5,18 @@
     border-width: 0;
     border-style: solid;
 }
+
+.correct {
+    outline: 2px solid green
+}
+
+.incorrect {
+    outline: 2px solid red
+}
+.informacion
+{
+    display: none;
+}
+.show-informacion {
+    display: block;
+}
