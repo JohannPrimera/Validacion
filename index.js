@@ -19,28 +19,74 @@ console.log(passwordSimpleRegex.test("123456"));
 //selector
 const countries = document.querySelector("#countries");
 const usernameInput = document.querySelector("#username");
+const emailInput = document.querySelector("#email");
+const phoneInput = document.querySelector("#phone");
+const passwordInput = document.querySelector("#password");
+const confirmPasswordInput = document.querySelector("#confirm-password");
 
 //validaciones
 let usernameValidacion = false;
+let emailValidacion = false;
+let phoneValidacion = false;
+let passwordValidacion = false;
+let confirmPasswordValidacion = false;
+let countriesValidacion = false;
 
+//function
+
+const validation = (event, validation, element, message) => {
+    const informacion = element.parentElement.children[1];
+    if(validation){
+        element.classList.add("correct");
+        element.classList.remove("incorrect");
+        informacion.classList.remove("show-informacion");
+    }else{
+        element.classList.add("incorrect");
+        element.classList.remove("correct");
+        informacion.classList.add("show-informacion");
+    }
+}
 
 [...countries].forEach(option =>{
    option.innerHTML = (option.innerHTML.split("(")[0]);
 });
 
 usernameInput.addEventListener("input", event =>{
-    usernameValidacion = usernameRegex.test(event.target.value);
-    const informacion = event.target.parentElement.children[1];
-    if(usernameValidacion){ 
-        usernameInput.classList.add("correct");
-        usernameInput.classList.remove("incorrect");
-        informacion.classList.remove("show-informacion");
-    }else{
-        usernameInput.classList.add("incorrect");
-        usernameInput.classList.remove("correct");
-        informacion.classList.add("show-informacion");
+    usernameValidacion = USERNAME_REGEX.test(event.target.value);
+    validation(event, usernameValidacion, usernameInput, "Debe tener minimo 3 caracteres max 20");
+});
+
+emailInput.addEventListener("input", event =>{
+    emailValidacion = EMAIL_REGEX.test(event.target.value);
+    validation(event, emailValidacion, emailInput, "Debe ser un correo valido");
+});
+
+phoneInput.addEventListener("input", event =>{
+    phoneValidacion = PHONE_REGEX.test(event.target.value);
+    validation(event, phoneValidacion, phoneInput, "Solo acepta numeros");
+});
+
+passwordInput.addEventListener("input", event =>{
+    passwordValidacion = PASSWORD_REGEX.test(event.target.value);
+    validation(event, passwordValidacion, passwordInput, "Debe incluir 1 numero y 1 letra. Maximo 16 caracteres");
+});
+
+confirmPasswordInput.addEventListener("input", event =>{
+    confirmPasswordValidacion = CONFIRM_PASSWORD_REGEX.test(event.target.value);
+    validation(event, confirmPasswordValidacion, confirmPasswordInput, "Debe incluir 1 numero y 1 letra. Maximo 16 caracteres");
+});
+
+countries.addEventListener("change", event =>{
+    const optionSelected = [...event.target.children].find(option => option.selected);
+    if (optionSelected && optionSelected.value !== "") {
+        countriesValidacion = true;
+        const phoneCodeSpan = document.querySelector('#phone code');
+        if (phoneCodeSpan) {
+            phoneCodeSpan.textContent = `+${optionSelected.value}`;
+        }
+        validation(event, countriesValidacion, countries, "Debe seleccionar un pais");
+    } else {
+        countriesValidacion = false;
+        validation(event, countriesValidacion, countries, "Debe seleccionar un pais");
     }
-
-})
-
-
+});
