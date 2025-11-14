@@ -4,25 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>validacion</title>
     <link rel="stylesheet" href="styles.css">
+    <title>Validación</title>
 </head>
 
 <body>
     <form id="form">
-        <h1 id="form-title">validacion</h1>
+        <h1 id="form-title">Validación</h1>
         <div class="input-div">
-            <input type="text" id="username" placeholder="Nombre de usuario">
-<p class="informacion">
-                    Debe tener minimo 3 caracteres max 20
-                </p>
+            <input type="text" id="username" placeholder="Nombre de Usuario">
+            <p class="information">
+                3-20 caracteres (letras, números, _ , -)
+            </p>
         </div>
         <div class="input-div">
-            <input type="email" id="email" placeholder="Correo electronico">
+            <input type="email" id="email" placeholder="Correo Electrónico">
+            <p class="information">
+                Debe ser escrito como este formato válido (ej: usuario@dominio.com)<br>
+            </p>
         </div>
         <div class="input-div">
-            <select name="countryCode" id="countries">
-                <option value="" selected disabled>selecciona un pais</option>
+            <select id="countries">
+                <option value="" disabled>Selecciona un Pais</option>
                 <option data-countryCode="GB" value="44">UK (+44)</option>
                 <option data-countryCode="US" value="1">USA (+1)</option>
                 <option data-countryCode="DZ" value="213">Algeria (+213)</option>
@@ -237,44 +240,43 @@
                 <option data-countryCode="YE" value="967">Yemen (South)(+967)</option>
                 <option data-countryCode="ZM" value="260">Zambia (+260)</option>
                 <option data-countryCode="ZW" value="263">Zimbabwe (+263)</option>
-            
             </select>
-            <p class="informacion">
-                    Debe seleccionar un pais
-                </p>
+            <p class="information">
+                Debe seleccionar un país<br>
+            </p>
         </div>
-
-            <div class="input-div">
-                <div id="phone-container">
-                    <span id="phone code">+##</span>
-                <input type="tel" id="phone" placeholder="Numero de Telefonico" class="phone-input">
-                </div>
-                <p class="informacion">
-                    Solo acepta numeros
-                </p>
+        <div class="input-div">
+            <div class="phone-row">
+                <span id="phone-code">+##</span>
+                <input type="tel" id="phone" placeholder="Número de Teléfono">
             </div>
-
-            <div class="input-div">
-                <input type="password" id="password" placeholder="Contrseña">
-                <p class="informacion">
-                    Debe incluir 1 numero y 1 letra. Maximo 16 caracteres
-                </p>
-            </div>
-
-            <div class="input-div">
-                <input type="password" id="confirm-password" placeholder="Confirmar Contrseña">
-            </div>
-            <p class="informacion">
-                    Debe incluir 1 numero y 1 letra. Maximo 16 caracteres
-                </p>
-
+            <p class="information">
+                Debe tener un mínimo de 8 dígitos (puede incluir +, -, espacios, paréntesis)<br>
+            </p>
         </div>
-
+        <div class="input-div">
+            <input type="password" id="password" placeholder="Contraseña">
+            <p class="information">
+                Debe tener 8 o mas caracteres, 1 mayúscula, 1 minúscula, 1 número, 1 carácter especial (@$!%*?&)<br>
+            </p>
+        </div>
+        <div class="input-div">
+            <input type="password" id="confirm-password" placeholder="Confirmar Contraseña">
+            <p class="information">
+                Debe coincidir con la Contraseña<br>
+            </p>
+        </div>
         <button disabled id="form-btn">Registrar</button>
     </form>
-
+    <footer class="footer">
+        <p>
+            Creado por 
+            <a href="https://github.com/JohannPrimera" target="_blank" rel="noopener noreferrer" class="github-link">
+                Johann Primera
+            </a>
+        </p>
+    </footer>
     <script src="index.js"></script>
-
 </body>
 
 </html>
